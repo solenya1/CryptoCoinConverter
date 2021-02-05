@@ -1,3 +1,6 @@
+from scrapping import normalize
+from scrapping import normalize_dolar
+
 """ 
     Some information:
 
@@ -49,37 +52,33 @@ class Convert:
         dolar_value = self.mybtc * self.btc
         return dolar_value
 
+# This links below it's where I collect the actual price fo $BTC and $USDolar.
+url = 'https://coinmarketcap.com/currencies/bitcoin/markets/' # $BTC value
+url_ = 'https://valor.globo.com/valor-data/' # Price of Dolar in real
 
-# Some random values
-btc = 34413.46
-dolar = 5.46
-wallet_reais = 500
-wallet_dolar = 500
+# The input data.
+btc = normalize(url)
+dolar = normalize_dolar(url_)
+wallet_reais = 0 
+wallet_dolar = 0
 
-# The Basics of the function
-convert = Convert(btc_actual_price=btc, dolar_actual_price=dolar,
-                    real_input=wallet_reais, dolar_input=wallet_dolar, btc_input=0)
+# <---------------------------------------------------------------------------->
+# TESTING THE PROGRAM
 
-# Testing the algorithm and it's WORK !!!
-dolar_value = convert.real_to_dolar()
-btc_value = convert.real_to_btc(dolar_value)
+while True:
+    print('--------------------------------')
+    print('Welcome do CryptoCoinConverter')
+    print('-------------------------------')
+    print('Please Select your currency:')
+    print('[1] $Dolar \n[2] $REAL \n[3] EXIT')
+    print('\n')
+    C = int(input('Type Here::'))
 
-convert = Convert(btc_actual_price=btc, dolar_actual_price=dolar,
-                    real_input=wallet_reais, dolar_input=wallet_dolar, btc_input=btc_value)
-
-real_value = convert.btc_to_real()
-dolar_value_ofbtc = convert.btc_to_dolar()
-
-
-print(f'Valor em reais:: {wallet_reais} | valor em dolar :: {dolar_value} | valor em $BTC :: {btc_value}')
-
-print(f'Valor em reais novamente convertidos : {real_value}')
-
-print(f'Valor em dolar novamente convertidos: {dolar_value_ofbtc}')
-
-"""
-
-    Now it's time to take the data from internet process and see if we can get the real time 
-    $BTC value to convert in the function, maybe trying some requests or Selenium 
-
-"""
+    if C == 1:
+        pass
+    if C == 2:
+        pass
+    if C == 3:
+        print('-------------------------------------')
+        print('         Thanks to utilize CCandC')
+        break

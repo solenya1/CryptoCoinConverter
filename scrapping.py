@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = 'https://coinmarketcap.com/currencies/bitcoin/markets/' # $BTC value
-url_ = 'https://valor.globo.com/valor-data/' # Price of Dolar in real 
 
 def normalize(link):
 
@@ -27,5 +25,3 @@ def normalize_dolar(link):
 
     return newvalue 
 
-print("valor do #BTC:: $", normalize(url))
-print("Valor do dolar :: R$", normalize_dolar(url_))
