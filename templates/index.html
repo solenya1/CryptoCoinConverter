@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title> My application </title>
+
+{% endblock %}
+
+{% block body %}
+<img src="/static/ccc.png">
+<p id="phrase"><center id="phrase">"BECAUSE SOMETIMES SIMPLE IS BETTER"</center></p>
+<br>
+<form action="/add" method="POST">
+		<div style="text-align: center;">
+        <label for="fvalue" style="padding-right: 660px; display: block;">Value: </label>
+        <input type="number" name="valueinput" step="0.01">
+        <select>
+            <option>Dolar($USD)</option>
+            <option>Real ($BRL)</option>
+        </select>
+        <button  class="btnswap" title="swap"><i class="fa fa-exchange"></i></button>
+        <select class="coinselector" style="width: 200px; text-align: center;">
+            <option>Bitcoin($BTC)</option>
+            <option>Etherium($ETH)</option>
+        </select>
+
+				<!-- Traing to create a ifelse statetment -->
+  			<button name="action" class="btnconvert" value="Convertbutton" type="submit">Convert</button>
+		</div>
+  	<br>
+</form>
+<div id="outputdiv">
+    <h3 style="text-align: left;">Conversion result:</h3>
+    <br>
+		 {% for Converter in Converter_values %} 
+      	<p><b>Convert from:</b> $USD</p>
+      	<p><b>Amount to convert:</b> {{ Converter.inpvalue }}</p>
+      	<br>
+      	<p><b>To: </b> Bitcoin ($BTC)</p>
+				<p><b>Conversion result: </b> {{ Converter.inpvalue / Converter.btcvalue }}</p>
+      	<a href="/delete/{{ Converter.id }}">Delete</a>
+
+</div>
+<div id="infodiv">
+	<p><b>Last price update:</b> {{ Converter.date_now }} </p>
+    <p><b>Rate:</b></p>
+    <p>1 Bitcoin($BTC) = {{ Converter.btcvalue }} United States Dolar ($USD)</p>
+    <p>1 Unite States Dolar ($USD) = {{ Converter.usdvalue }} Real/BRL</p>
+</div>
+
+		{% endfor %}
+{% endblock %}
